@@ -13,7 +13,7 @@ After Response scripts.
 | Environment | Mac / Postman v11.84.5 |
 | API Tested | JSONPlaceholder (jsonplaceholder.typicode.com) |
 | Total Requests | 6 |
-| Test Scripts | 17 automated assertions |
+| Test Scripts | 16 automated assertions |
 | Overall Status | Pass — All requests returned expected responses |
 
 ## Requests & Test Scripts
