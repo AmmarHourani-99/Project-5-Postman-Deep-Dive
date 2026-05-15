@@ -1,0 +1,28 @@
+$kind: http-request
+name: Create post missing fields
+url: https://jsonplaceholder.typicode.com/posts
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "name": "Ammar Hourani"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 201", function() {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Name exists in response", function() {
+          const response = pm.response.json();
+          pm.expect(response.name).to.eql("Ammar Hourani");
+      });
+
+      pm.test("Job field is missing", function() {
+          const response = pm.response.json();
+          pm.expect(response.job).to.not.exist;
+      });
+    language: text/javascript
+order: 4441064752520219

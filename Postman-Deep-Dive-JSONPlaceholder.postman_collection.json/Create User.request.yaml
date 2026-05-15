@@ -1,0 +1,30 @@
+$kind: http-request
+name: Create User
+url: https://jsonplaceholder.typicode.com/posts
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "name": "Ammar Hourani",
+        "job": "QA Engineer"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 201", function(){
+          pm.response.to.have.status(201);
+      }
+      );
+
+      pm.test("Response has ID", function(){
+          const response = pm.response.json();
+          pm.expect(response.id).to.exist;
+      });
+
+      pm.test("Name is correct", function(){
+          const response = pm.response.json();
+          pm.expect(response.name).to.eql("Ammar Hourani");
+      });
+    language: text/javascript
+order: 1778861173971
